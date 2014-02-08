@@ -1,0 +1,143 @@
+<form id="co-customer-form" action="">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Personal Information') ?></h2>
+        <ul class="form-list">
+            <li class="control">
+                <div class="input-box">
+                    <input type="radio" class="validate-one-required-by-name" name="tipopessoa" value="PF" id="tipopessoapf" <?php echo ($this->getCustomer()->getTipopessoa() == 'PF' ? 'checked="checked"' : ''); ?>/>
+                </div>
+                <label for="tipopessoapf"><?php echo $this->__('Pessoa física'); ?></label>
+                <div class="input-box">
+                    <input type="radio" class="validate-one-required-by-name" name="tipopessoa" value="PJ" id="tipopessoapj" <?php echo ($this->getCustomer()->getTipopessoa() == 'PJ' ? 'checked="checked"' : ''); ?>/>
+                </div>
+                <label for="tipopessoapj"><?php echo $this->__('Pessoa jurídica'); ?></label>
+            </li>
+            <li class="fields tipopessoa-pf tipopessoa-pj">
+                <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getCustomer())->setForceUseCustomerAttributes(true)->toHtml() ?>
+            </li>
+            <li class="tipopessoa-pf tipopessoa-pj">
+                <label for="cpf" class="required"><em>*</em><?php echo $this->__('CPF') ?></label>
+                <div class="input-box">
+                    <input type="text" name="cpf" id="cpf" value="<?php echo $this->escapeHtml($this->getCustomer()->getCpf()) ?>" title="<?php echo $this->__('CPF') ?>" class="input-text validate-cpf required-entry" />
+                </div>
+            </li>
+            <li class="tipopessoa-pj tipopessoa-pf">
+                <label for="telefone" class="required"><em>*</em><?php echo $this->__('Telephone') ?></label>
+                <div class="input-box">
+                    <input type="text" name="telefone" id="telefone" value="<?php echo $this->escapeHtml($this->getCustomer()->getTelefone()) ?>" title="<?php echo $this->__('Telephone') ?>" class="input-text validate-telefone required-entry" />
+                </div>
+            </li>
+
+            <?php $_dob = $this->getLayout()->createBlock('magefm_customer/widget_dob') ?>
+            <?php if ($_dob->isEnabled()): ?>
+            <li class="tipopessoa-pf tipopessoa-pj"><?php echo $_dob->setDate($this->getCustomer()->getDob())->toHtml() ?></li>
+            <?php endif ?>
+
+            <?php $_gender = $this->getLayout()->createBlock('magefm_customer/widget_gender') ?>
+            <?php if ($_gender->isEnabled()): ?>
+            <li class="tipopessoa-pf tipopessoa-pj control"><?php echo $_gender->setGender($this->getCustomer()->getGender())->toHtml() ?></li>
+            <?php endif ?>
+        </ul>
+    </div>
+    <div class="fieldset tipopessoa-pj" style="<?php echo ($this->getCustomer()->getTipopessoa() != 'PJ' ? 'display: none;' : ''); ?>">
+        <h2 class="legend"><?php echo $this->__('Company Information') ?></h2>
+        <ul class="form-list">
+            <li>
+                <label for="razao_social" class="required"><em>*</em><?php echo $this->__('Razão Social') ?></label>
+                <div class="input-box">
+                    <input type="text" name="razao_social" id="razao_social" value="<?php echo $this->escapeHtml($this->getCustomer()->getRazaoSocial()) ?>" title="<?php echo $this->__('Razão Social') ?>" class="input-text required-entry" />
+                </div>
+            </li>
+            <li>
+                <label for="cnpj" class="required"><em>*</em><?php echo $this->__('CNPJ') ?></label>
+                <div class="input-box">
+                    <input type="text" name="cnpj" id="cnpj" value="<?php echo $this->escapeHtml($this->getCustomer()->getCnpj()) ?>" title="<?php echo $this->__('CNPJ') ?>" class="input-text validate-cnpj required-entry" />
+                </div>
+            </li>
+            <li>
+                <label for="inscricao_estadual" class="required"><em>*</em><?php echo $this->__('Inscrição Estadual') ?></label>
+                <div class="input-box">
+                    <input type="text" name="inscricao_estadual" id="inscricao_estadual" value="<?php echo $this->escapeHtml($this->getCustomer()->getInscricaoEstadual()) ?>" title="<?php echo $this->__('Inscrição Estadual') ?>" class="input-text <?php echo ($this->getCustomer()->getInscricaoEstadualIsento() ? '' : 'required-entry'); ?>" <?php echo ($this->getCustomer()->getInscricaoEstadualIsento() ? 'disabled="disabled"' : ''); ?>/>
+                </div>
+                <div class="input-box">
+                    <input type="checkbox" name="inscricao_estadual_isento" value="1" id="inscricao_estadual_isento" <?php echo ($this->getCustomer()->getInscricaoEstadualIsento() ? 'checked="checked"' : ''); ?>/>
+                </div>
+                <label for="inscricao_estadual_isento"><?php echo $this->__('Isento') ?></label>
+            </li>
+        </ul>
+    </div>
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Login Information') ?></h2>
+        <ul class="form-list">
+            <li>
+                <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                <div class="input-box">
+                    <input type="text" name="email" id="email_address" value="<?php echo $this->escapeHtml($this->getCustomer()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+                </div>
+            </li>
+            <li class="fields" id="register-customer-password">
+                <div class="field">
+                    <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                    <div class="input-box">
+                        <input type="password" name="customer_password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                    <div class="input-box">
+                        <input type="password" name="confirm_password" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                    </div>
+                </div>
+            </li>
+            <?php echo $this->getChildHtml('form.additional.info'); ?>
+            <?php echo $this->getChildHtml('persistent.remember.me'); ?>
+        </ul>
+        <?php echo $this->getChildHtml('persistent.remember.me.tooltip'); ?>
+    </div>
+    <div class="buttons-set" id="customer-buttons-container">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="button" title="<?php echo $this->__('Continue') ?>" class="button" onclick="customer.save()"><span><span><?php echo $this->__('Continue') ?></span></span></button>
+        <span class="please-wait" id="customer-please-wait" style="display:none;">
+            <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Loading next step...') ?>" title="<?php echo $this->__('Loading next step...') ?>" class="v-middle" /> <?php echo $this->__('Loading next step...') ?>
+        </span>
+    </div>
+</form>
+<script type="text/javascript">
+    var customer = new Customer('co-customer-form', '<?php echo $this->getUrl('magefm_customer/checkout/saveCustomer') ?>');
+    var customerForm = new VarienForm('co-customer-form', true);
+    
+    var tipopessoaChange = function(event, element) {
+        if (element.value === 'PJ') {
+            $$('.tipopessoa-pf').each(function(e){
+                e.hide();
+            });
+            $$('.tipopessoa-pj').each(function(e){
+                e.show();
+            });
+        } else {
+            $$('.tipopessoa-pj').each(function(e){
+                e.hide();
+            });
+            $$('.tipopessoa-pf').each(function(e){
+                e.show();
+            });
+        }
+    };
+    
+    $('inscricao_estadual_isento').on('change', function(event, element){
+        if(element.checked === true) {
+            $('inscricao_estadual').disable();
+            $('inscricao_estadual').removeClassName('required-entry');
+        } else {
+            $('inscricao_estadual').enable();
+            $('inscricao_estadual').addClassName('required-entry');
+        }
+    });
+
+    $('tipopessoapf').on('change', tipopessoaChange);
+    $('tipopessoapj').on('change', tipopessoaChange);
+    
+    jQuery("#cpf").mask('999.999.999-99');
+    jQuery("#cnpj").mask('999.999.999/9999-99');
+    jQuery("#telefone").phoneMaskBrazil();
+</script>

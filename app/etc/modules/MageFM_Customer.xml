@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <MageFM_Customer>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Magento_Customer />
+            </depends>
+        </MageFM_Customer>
+    </modules>
+</config>

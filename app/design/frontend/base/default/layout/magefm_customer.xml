@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs">
+                <script>magefm/jquery.js</script>
+            </action>
+            <action method="addJs">
+                <script>magefm/jquery.noconflict.js</script>
+            </action>
+            <action method="addJs">
+                <script>magefm/jquery.mask.js</script>
+            </action>
+            <action method="addJs">
+                <script>magefm/customer.js</script>
+            </action>
+        </reference>
+    </default>
+    <checkout_onepage_index>
+        <reference name="checkout.onepage">
+            <block type="magefm_customer/checkout_onepage_customer" name="checkout.onepage.customer" as="customer" template="magefm/customer/checkout/onepage/customer.phtml" before="billing" />
+        </reference>
+    </checkout_onepage_index>
+</layout>

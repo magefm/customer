@@ -1,0 +1,10 @@
+<?php $options = Mage::getResourceSingleton('customer/customer')->getAttribute('gender')->getSource()->getAllOptions();?>
+<?php $value = $this->getGender();?>
+<label<?php if ($this->isRequired()) echo ' class="required"' ?>><?php if ($this->isRequired()) echo '<em>*</em>' ?><?php echo $this->__('Gender') ?></label>
+<?php foreach ($options as $option): ?>
+<?php if ($option['value'] == ''): continue; endif; ?>
+<div class="input-box">
+    <input type="radio" class="validate-one-required-by-name" name="<?php echo $this->getFieldName('gender'); ?>" value="<?php echo $option['value'] ?>" id="<?php echo $this->getFieldId('gender-' . $option['value']); ?>" <?php echo ($value == $option['value'] ? 'checked="checked"' : ''); ?>/>
+</div>
+<label for="<?php echo $this->getFieldId('gender-' . $option['value']); ?>"><?php echo $option['label'] ?></label>
+<?php endforeach; ?>
