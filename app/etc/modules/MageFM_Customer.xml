@@ -5,7 +5,7 @@
             <active>true</active>
             <codePool>community</codePool>
             <depends>
-                <Magento_Customer />
+                <Mage_Customer />
             </depends>
         </MageFM_Customer>
     </modules>
