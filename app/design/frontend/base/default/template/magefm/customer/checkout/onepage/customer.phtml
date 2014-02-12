@@ -103,7 +103,7 @@
     </div>
 </form>
 <script type="text/javascript">
-    var customer = new Customer('co-customer-form', '<?php echo $this->getUrl('magefm_customer/checkout/saveCustomer') ?>');
+    var customer = new Customer('co-customer-form', '<?php echo $this->getUrl('magefm_customer/checkout/saveCustomer', array('_secure' => true)); ?>');
     var customerForm = new VarienForm('co-customer-form', true);
     
     var tipopessoaChange = function(event, element) {
