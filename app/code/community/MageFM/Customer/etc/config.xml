@@ -2,7 +2,7 @@
 <config>
     <modules>
         <MageFM_Customer>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </MageFM_Customer>
     </modules>
     <global>
@@ -170,6 +170,25 @@
         </routers>
     </frontend>
     <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <magefm_customer>
+                                            <title>MageFM Customer</title>
+                                        </magefm_customer>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
         <translate>
             <modules>
                 <MageFM_Customer>
@@ -180,4 +199,11 @@
             </modules>
         </translate>
     </adminhtml>
+    <default>
+        <magefm_customer>
+            <general>
+                <cep_webservice><![CDATA[http://cep.magefm.com/]]></cep_webservice>
+            </general>
+        </magefm_customer>
+    </default>
 </config>

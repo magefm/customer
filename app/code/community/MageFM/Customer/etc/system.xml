@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <magefm translate="label" module="magefm_customer">
+            <label>MageFM</label>
+            <sort_order>900</sort_order>
+        </magefm>
+    </tabs>
+    <sections>
+        <magefm_customer translate="label" module="magefm_customer">
+            <label>Customer</label>
+            <tab>magefm</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>2</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <cep_webservice translate="label">
+                            <label>CEP Webservice</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cep_webservice>
+                    </fields>
+                </general>
+            </groups>
+        </magefm_customer>
+    </sections>
+</config>

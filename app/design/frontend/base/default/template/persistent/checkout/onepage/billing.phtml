@@ -203,7 +203,7 @@ $postcode = $this->getAddress()->getPostcode();
         jQuery('#billing-cep-please-wait').show();
         jQuery.ajax({
             url: '<?php echo Mage::getUrl('magefm_customer/cep/buscar'); ?>',
-            data: { formato: 'json', cep: jQuery('input[id="billing:postcode"]').val() },
+            data: { cep: jQuery('input[id="billing:postcode"]').val() },
             dataType: 'json',
             success: function (data) {
                 jQuery('#billing-cep-please-wait').hide();
