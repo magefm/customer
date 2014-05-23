@@ -188,7 +188,7 @@ $postcode = $this->getAddress()->getPostcode();
     jQuery('#buscar-cep').on('click', function(e){
         jQuery('#cep-please-wait').show();
         jQuery.ajax({
-            url: '<?php echo Mage::getUrl('magefm_customer/cep/buscar'); ?>',
+            url: '<?php echo Mage::getUrl('magefm_customer/cep/buscar', array('_secure' => true)); ?>',
             data: { cep: jQuery('#zip').val() },
             dataType: 'json',
             success: function (data) {

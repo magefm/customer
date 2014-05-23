@@ -179,7 +179,7 @@ $postcode = $this->getAddress()->getPostcode();
     jQuery('#shipping-buscar-cep').on('click', function(e){
         jQuery('#shipping-cep-please-wait').show();
         jQuery.ajax({
-            url: '<?php echo Mage::getUrl('magefm_customer/cep/buscar'); ?>',
+            url: '<?php echo Mage::getUrl('magefm_customer/cep/buscar', array('_secure' => true)); ?>',
             data: { formato: 'json', cep: jQuery('input[id="shipping:postcode"]').val() },
             dataType: 'json',
             success: function (data) {
