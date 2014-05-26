@@ -4,7 +4,7 @@ class MageFM_Customer_Block_Widget_Dob extends Mage_Customer_Block_Widget_Abstra
 {
 
     protected $_date;
-    protected $_inputFormat = 'dd/MM/YYYY';
+    protected $_inputFormat = 'dd/MM/yyyy';
     protected $_inputMask = '99/99/9999';
     protected $_dbFormat = 'YYYY-MM-dd HH:ii:ss';
 
