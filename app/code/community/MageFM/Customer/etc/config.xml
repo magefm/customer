@@ -2,7 +2,7 @@
 <config>
     <modules>
         <MageFM_Customer>
-            <version>1.0.3</version>
+            <version>1.0.4</version>
         </MageFM_Customer>
     </modules>
     <global>
@@ -199,6 +199,24 @@
             </modules>
         </translate>
     </adminhtml>
+    <admin>
+        <fieldsets>
+            <customer_dataflow>
+                <identification>
+                    <billing>1</billing>
+                    <shipping>1</shipping>
+                </identification>
+                <mobilephone>
+                    <billing>1</billing>
+                    <shipping>1</shipping>
+                </mobilephone>
+                <bairro>
+                    <billing>1</billing>
+                    <shipping>1</shipping>
+                </bairro>
+            </customer_dataflow>
+        </fieldsets>
+    </admin>
     <default>
         <magefm_customer>
             <general>
